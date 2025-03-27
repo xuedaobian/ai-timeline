@@ -65,6 +65,49 @@
             transform: scale(1.2);
         }
         
+        .decade-dot {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .decade-dot:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.5);
+        }
+        
+        .decade-dot:after {
+            content: "点击跳转";
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        
+        .decade-dot:hover:after {
+            opacity: 1;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+        
         .nav-item {
             transition: all 0.3s ease;
             border-left: 3px solid transparent;
@@ -193,10 +236,18 @@
             <!-- Timeline Line -->
             <div class="timeline-line absolute left-4 md:left-1/2 top-0 bottom-0 w-1 md:transform md:-translate-x-1/2"></div>
             
+            <!-- Keyboard navigation hint -->
+            <div class="mb-8 text-center text-sm text-gray-600 fade-in-up">
+                <div class="inline-flex items-center bg-white bg-opacity-70 px-3 py-2 rounded-lg shadow-sm">
+                    <i class="fas fa-keyboard text-indigo-500 mr-2"></i>
+                    <span>使用键盘方向键 <kbd class="bg-gray-200 px-1 rounded mx-1">←</kbd> <kbd class="bg-gray-200 px-1 rounded mx-1">→</kbd> <kbd class="bg-gray-200 px-1 rounded mx-1">↑</kbd> <kbd class="bg-gray-200 px-1 rounded mx-1">↓</kbd> 浏览时间线，点击年代圆点可直接跳转</span>
+                </div>
+            </div>
+            
             <!-- 1940s Section -->
             <section id="1940s" class="mb-20">
                 <div class="flex flex-col md:flex-row items-center justify-center mb-8">
-                    <div class="timeline-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0">
+                    <div class="timeline-dot decade-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0 cursor-pointer" data-target="1940s">
                         <span class="text-white text-xs font-bold">40s</span>
                     </div>
                     <h2 class="text-3xl font-bold text-indigo-800 md:ml-4">1940s：早期理论与计算机雏形</h2>
@@ -260,7 +311,7 @@
             <!-- 1950s Section -->
             <section id="1950s" class="mb-20">
                 <div class="flex flex-col md:flex-row items-center justify-center mb-8">
-                    <div class="timeline-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0">
+                    <div class="timeline-dot decade-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0 cursor-pointer" data-target="1950s">
                         <span class="text-white text-xs font-bold">50s</span>
                     </div>
                     <h2 class="text-3xl font-bold text-indigo-800 md:ml-4">1950s：AI概念诞生与早期探索</h2>
@@ -338,7 +389,7 @@
             <!-- 1960s Section -->
             <section id="1960s" class="mb-20">
                 <div class="flex flex-col md:flex-row items-center justify-center mb-8">
-                    <div class="timeline-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0">
+                    <div class="timeline-dot decade-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0 cursor-pointer" data-target="1960s">
                         <span class="text-white text-xs font-bold">60s</span>
                     </div>
                     <h2 class="text-3xl font-bold text-indigo-800 md:ml-4">1960s：符号逻辑与专家系统兴起</h2>
@@ -401,7 +452,7 @@
             <!-- 1970s Section -->
             <section id="1970s" class="mb-20">
                 <div class="flex flex-col md:flex-row items-center justify-center mb-8">
-                    <div class="timeline-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0">
+                    <div class="timeline-dot decade-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0 cursor-pointer" data-target="1970s">
                         <span class="text-white text-xs font-bold">70s</span>
                     </div>
                     <h2 class="text-3xl font-bold text-indigo-800 md:ml-4">1970s：AI寒冬与反思</h2>
@@ -467,7 +518,7 @@
             <!-- 1980s Section -->
             <section id="1980s" class="mb-20">
                 <div class="flex flex-col md:flex-row items-center justify-center mb-8">
-                    <div class="timeline-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0">
+                    <div class="timeline-dot decade-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0 cursor-pointer" data-target="1980s">
                         <span class="text-white text-xs font-bold">80s</span>
                     </div>
                     <h2 class="text-3xl font-bold text-indigo-800 md:ml-4">1980s：AI商业化与寒冬再临</h2>
@@ -534,7 +585,7 @@
             <!-- 1990s Section -->
             <section id="1990s" class="mb-20">
                 <div class="flex flex-col md:flex-row items-center justify-center mb-8">
-                    <div class="timeline-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0">
+                    <div class="timeline-dot decade-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0 cursor-pointer" data-target="1990s">
                         <span class="text-white text-xs font-bold">90s</span>
                     </div>
                     <h2 class="text-3xl font-bold text-indigo-800 md:ml-4">1990s：数据驱动与互联网崛起</h2>
@@ -597,7 +648,7 @@
             <!-- 2000s Section -->
             <section id="2000s" class="mb-20">
                 <div class="flex flex-col md:flex-row items-center justify-center mb-8">
-                    <div class="timeline-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0">
+                    <div class="timeline-dot decade-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0 cursor-pointer" data-target="2000s">
                         <span class="text-white text-xs font-bold">00s</span>
                     </div>
                     <h2 class="text-3xl font-bold text-indigo-800 md:ml-4">2000s：大数据与深度学习突破</h2>
@@ -644,8 +695,8 @@
                     </div>
                 </div>
                 
-                <div class="timeline-card ml-8 md:ml-auto md:mr-0 md:w-[45%] p-6 mb-12 relative">
-                    <div class="absolute left-[-2rem] top-1/2 transform -translate-y-1/2 md:left-[-2rem] md:translate-x-[-50%] timeline-dot w-4 h-4 rounded-full"></div>
+                <div class="timeline-card ml-8 md:ml-0 md:mr-auto md:w-[45%] p-6 mb-12 relative">
+                    <div class="absolute left-[-2rem] top-1/2 transform -translate-y-1/2 md:left-auto md:right-[-2rem] md:translate-x-1/2 timeline-dot w-4 h-4 rounded-full"></div>
                     <span class="event-year text-lg mb-2 block">2010</span>
                     <div class="space-y-2">
                         <div class="flex items-start">
@@ -663,7 +714,7 @@
             <!-- 2010s Section -->
             <section id="2010s" class="mb-20">
                 <div class="flex flex-col md:flex-row items-center justify-center mb-8">
-                    <div class="timeline-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0">
+                    <div class="timeline-dot decade-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0 cursor-pointer" data-target="2010s">
                         <span class="text-white text-xs font-bold">10s</span>
                     </div>
                     <h2 class="text-3xl font-bold text-indigo-800 md:ml-4">2010s：AI爆发与社会挑战</h2>
@@ -733,7 +784,7 @@
             <!-- 2020s Section -->
             <section id="2020s" class="mb-20">
                 <div class="flex flex-col md:flex-row items-center justify-center mb-8">
-                    <div class="timeline-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0">
+                    <div class="timeline-dot decade-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0 cursor-pointer" data-target="2020s">
                         <span class="text-white text-xs font-bold">20s</span>
                     </div>
                     <h2 class="text-3xl font-bold text-indigo-800 md:ml-4">2020s：通用AI与多模态突破</h2>
@@ -784,7 +835,7 @@
             <!-- Key Trends Section -->
             <section id="trends" class="mb-20">
                 <div class="flex flex-col md:flex-row items-center justify-center mb-8">
-                    <div class="timeline-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0">
+                    <div class="timeline-dot decade-dot w-10 h-10 rounded-full flex items-center justify-center z-10 mb-4 md:mb-0 cursor-pointer" data-target="trends">
                         <span class="text-white text-xs font-bold"><i class="fas fa-chart-line"></i></span>
                     </div>
                     <h2 class="text-3xl font-bold text-indigo-800 md:ml-4">关键趋势与影响</h2>
@@ -904,6 +955,142 @@
                     sideNav.classList.toggle('active');
                 });
             }
+            
+            // Create floating indicator
+            const timelineContainer = document.querySelector('.relative.max-w-5xl');
+            const floatingIndicator = document.createElement('div');
+            floatingIndicator.className = 'hidden absolute py-1 px-3 bg-indigo-600 text-white text-xs rounded-full shadow-lg z-20 transform -translate-x-1/2';
+            timelineContainer.appendChild(floatingIndicator);
+            
+            // Get all decade sections for keyboard navigation
+            const decadeSections = Array.from(document.querySelectorAll('.decade-dot')).map(dot => {
+                return {
+                    id: dot.getAttribute('data-target'),
+                    element: dot
+                };
+            });
+            
+            // Add keyboard navigation
+            let currentFocusIndex = -1;
+            
+            function navigateToSection(index) {
+                if (index >= 0 && index < decadeSections.length) {
+                    currentFocusIndex = index;
+                    const targetId = decadeSections[index].id;
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Add visual focus indicator
+                        document.querySelectorAll('.decade-dot').forEach(dot => {
+                            dot.classList.remove('ring-4', 'ring-white', 'ring-opacity-70');
+                        });
+                        decadeSections[index].element.classList.add('ring-4', 'ring-white', 'ring-opacity-70');
+                        
+                        // Update active state in navigation
+                        document.querySelectorAll('.nav-item').forEach(item => {
+                            item.classList.remove('active');
+                        });
+                        document.querySelector(`.nav-item[href="#${targetId}"]`)?.classList.add('active');
+                    }
+                }
+            }
+            
+            // Keyboard event listener
+            document.addEventListener('keydown', function(e) {
+                // Arrow Up or Arrow Left: Navigate to previous decade
+                if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    navigateToSection(currentFocusIndex > 0 ? currentFocusIndex - 1 : 0);
+                }
+                // Arrow Down or Arrow Right: Navigate to next decade
+                else if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    if (currentFocusIndex === -1) {
+                        navigateToSection(0);
+                    } else {
+                        navigateToSection(currentFocusIndex < decadeSections.length - 1 ? currentFocusIndex + 1 : decadeSections.length - 1);
+                    }
+                }
+                // Home key: Navigate to first decade
+                else if (e.key === 'Home') {
+                    e.preventDefault();
+                    navigateToSection(0);
+                }
+                // End key: Navigate to last decade
+                else if (e.key === 'End') {
+                    e.preventDefault();
+                    navigateToSection(decadeSections.length - 1);
+                }
+            });
+            
+            // Decade dot click navigation
+            document.querySelectorAll('.decade-dot').forEach((dot, index) => {
+                // Make each dot keyboard focusable
+                dot.setAttribute('tabindex', '0');
+                
+                // Handle keyboard enter key
+                dot.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+                
+                // Add ripple effect on click
+                dot.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('absolute', 'inset-0', 'bg-white', 'rounded-full', 'opacity-60', 'scale-0');
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.animation = 'ripple 0.6s linear';
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 700);
+                    
+                    const targetId = this.getAttribute('data-target');
+                    currentFocusIndex = decadeSections.findIndex(section => section.id === targetId);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active state in navigation
+                        document.querySelectorAll('.nav-item').forEach(item => {
+                            item.classList.remove('active');
+                        });
+                        document.querySelector(`.nav-item[href="#${targetId}"]`)?.classList.add('active');
+                    }
+                });
+                
+                // Show floating indicator with decade name on hover
+                dot.addEventListener('mouseenter', function() {
+                    const decadeName = this.querySelector('span').textContent;
+                    const targetId = this.getAttribute('data-target');
+                    
+                    let indicatorText = decadeName + '年代';
+                    if (targetId === 'trends') {
+                        indicatorText = '关键趋势';
+                    }
+                    
+                    floatingIndicator.textContent = indicatorText;
+                    floatingIndicator.style.top = (this.getBoundingClientRect().top + window.scrollY - 30) + 'px';
+                    floatingIndicator.style.left = (this.getBoundingClientRect().left + window.scrollX) + 'px';
+                    floatingIndicator.classList.remove('hidden');
+                });
+                
+                dot.addEventListener('mouseleave', function() {
+                    floatingIndicator.classList.add('hidden');
+                });
+            });
             
             // Smooth scrolling for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
